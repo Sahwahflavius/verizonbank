@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit User</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Edit User</h1>
+        <form method="POST" action="{{ url_for('update_user', user_id=user.id) }}">
+            <div class="form-group">
+                <label for="firstname">First Name:</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" value="{{ user.firstname }}">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name:</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" value="{{ user.lastname }}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="account_number">Account Number:</label>
+                    <input type="text" class="form-control" id="account_number" name="account_number" value="{{ user.account_number }}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="account_balance">Account Balance:</label>
+                    <input type="number" step="0.01" class="form-control" id="account_balance" name="account_balance" value="{{ user.account_balance }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select class="form-control" id="role" name="role">
+                    <option value="user" {% if user.role == 'user' %}selected{% endif %}>User</option>
+                    <option value="super_admin" {% if user.role == 'super_admin' %}selected{% endif %}>Super Admin</option>
+                    <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+                    <option value="manager" {% if user.role == 'manager' %}selected{% endif %}>Manager</option>
+                    <option value="moderator" {% if user.role == 'moderator' %}selected{% endif %}>Moderator</option>
+                </select>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Update">
+        </form>
+    </div>
+</body>
+</html>

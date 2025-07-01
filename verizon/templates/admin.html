@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+ <link rel="icon" href="{{ url_for('static', filename='/images/favicon.png') }}" type="image/png">
+ <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .topbar {
+        background-color: #333;
+        overflow: hidden;
+        padding: 10px 20px;
+    }
+
+    .blurred {
+        filter: blur(4px);
+        opacity: 0.4;
+    }
+
+    .topbar a {
+        float: left;
+        color: white;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .topbar a:hover {
+        background-color: #575757;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 95%;
+        margin: 20px auto 0 auto;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    td a {
+        margin-right: 10px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="topbar">
+        <a href="{{ url_for('admin') }}">Users</a>
+        <a href="{{ url_for('view_cards') }}">Cards</a>
+        <a href="{{ url_for('view_bank_accounts') }}">Bank Accounts</a>
+        <a href="{{ url_for('logout') }}" style="float: right;">Logout</a>
+    </div>
+
+    <h1>Admin Dashboard</h1>
+<form action="{{ url_for('search_by_account') }}" method="get" style="text-align: center; margin-top: 20px;">
+    <input type="text" name="account_number" placeholder="Enter Bank Account Number" required>
+    <button type="submit">Search</button>
+</form>
+
+    <p><a href="{{ url_for('admin') }}">← Back to Admin</a></p>
+  
+</div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>SSN</th>
+            <th>Address</th>
+            <th>Postal Code</th>
+            <th>Actions</th>
+        </tr>
+        {% for user in users %}
+        <tr class="{% if highlight_user_id and user.id != highlight_user_id %}blurred{% endif %}">
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>
+              {{ user.firstname }}
+              {{ user.lastname }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.ssn }}</td>
+            <td>{{ user.address }}</td>
+            <td>{{ user.zipcode }}</td>
+            <td>
+                <a href="{{ url_for('edit_user', user_id=user.id) }}">Edit</a>
+                <a href="{{ url_for('delete_user', user_id=user.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

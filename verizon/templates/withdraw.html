@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw Funds</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    form {
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 24px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+</style>
+</head>
+<body>
+<form method="POST" action="/withdraw">
+  <label>Phone Number:</label><br>
+  <input name="phone" required><br><br>
+
+  <label>Amount (XAF):</label><br>
+  <input name="amount" type="number" required><br><br>
+
+  <label>Method:</label><br>
+  <select name="method">
+    <option value="mtn">MTN</option>
+    <option value="orange">Orange</option>
+  </select><br><br>
+
+  <button type="submit">Withdraw</button>
+</form>
+
+<script>
+    // Optional: Add Bootstrap form validation
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('form')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+
+<script>
+    // Add Bootstrap classes to form elements
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('form').forEach(function(form) {
+            form.classList.add('needs-validation');
+            form.setAttribute('novalidate', '');
+        });
+        document.querySelectorAll('input, select').forEach(function(el) {
+            el.classList.add('form-control');
+            el.style.marginBottom = '16px';
+        });
+        document.querySelectorAll('button[type="submit"]').forEach(function(btn) {
+            btn.classList.add('btn', 'btn-primary', 'w-100');
+        });
+        document.querySelectorAll('label').forEach(function(label) {
+            label.classList.add('form-label');
+        });
+    });
+</script>
+</body>
+</html>

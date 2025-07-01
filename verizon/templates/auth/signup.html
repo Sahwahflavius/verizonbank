@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .signup-form {
+            width: 100%;
+            height: 100%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        /* Desktop layout (screens larger than 768px) */
+        @media (min-width: 768px) {
+            .signup-form {
+                width: 60%;
+                padding: 30px;
+            }
+
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+
+            .btn {
+                font-size: 1.1rem;
+                padding: 12px 20px;
+            }
+        }
+
+        /* Mobile layout (screens smaller than 768px) */
+        @media (max-width: 767px) {
+            .signup-form {
+                width: 90%;
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            .form-group {
+                margin-bottom: 1.2rem;
+            }
+
+            .btn {
+                width: 100%;
+                font-size: 1.2rem;
+                padding: 14px 0;
+            }
+        }
+
+        /* General form field adjustments */
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-form">
+        <h2 class="text-center">Sign Up</h2>
+        <form action="/signup" method="POST">
+         <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone:</label>
+                    <input type="text" class="form-control" id="phone" name="phone" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="ssn">SSN:</label>
+                <input type="text" class="form-control" id="ssn" name="ssn" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="zipcode">Zip Code:</label>
+                    <input type="text" class="form-control" id="zipcode" name="zipcode" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>

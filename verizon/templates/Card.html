@@ -1,0 +1,42 @@
+<!-- templates/all_cards.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Cards</title>
+ <link rel="icon" href="/templates/static/images/favicon.jpg" type="image/png">
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>All Cards</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Card Number</th>
+                <th>Expiry</th>
+                <th>CVV</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for card in cards %}
+            <tr>
+                <td>{{ card.user.firstname }} {{ card.user.lastname }}</td>
+                <td>{{ card.card_number }}</td>
+                <td>{{ card.card_expiry }}</td>
+                <td>{{ card.card_cvv }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No cards found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

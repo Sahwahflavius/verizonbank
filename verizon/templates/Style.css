@@ -1,0 +1,82 @@
+
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+.header {
+      background-color: #fff;
+      padding: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .user-info {
+      margin: 10px;
+    }
+    .balance-section {
+      background-color: #ffe6e6;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card {
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb);
+      color: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px;
+    }
+    .services, .bank-services {
+      margin: 10px;
+    }
+    .services h2, .bank-services h2 {
+      margin-bottom: 10px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+    }
+    .grid-item {
+      background: white;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: white;
+      display: flex;
+      justify-content: space-around;
+      box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+      padding: 10px 0;
+    }
+    .footer div {
+      text-align: center;
+    }
+    .card-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding: 10px;
+      margin: 10px;
+    }
+    .card-slide {
+      flex: 0 0 90%;
+      scroll-snap-align: center;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb);
+      color: white;
+      border-radius: 10px;
+      padding: 20px;
+      min-height: 150px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }

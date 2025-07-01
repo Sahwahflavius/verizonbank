@@ -1,0 +1,10 @@
+<!-- templates/auth/verify_otp.html -->
+<form method="POST">
+  <label>Enter OTP</label>
+  <input type="text" name="otp" required maxlength="6" pattern="\d{6}" />
+  <button type="submit">Verify</button>
+
+</form>
+<form action="{{ url_for('resend_otp') }}" method="get">
+    <button type="submit" class="btn btn-secondary">Resend OTP</button>
+</form>
