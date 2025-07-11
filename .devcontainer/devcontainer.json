@@ -1,0 +1,32 @@
+{
+  "name": "Universal Development Container",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "git": "latest",               // Enable git with the latest version
+    "node": "lts",                 // Node.js LTS version
+    "python": "3.9",               // Python 3.9
+    "docker": "latest",            // Docker CLI (if needed)
+    "docker-in-docker": "latest",  // Docker-in-Docker support
+    "visualstudio-code": "latest"  // VSCode support, if using the devcontainer with VSCode
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind" // Mount local workspace to container
+  ],
+  "postCreateCommand": "echo 'Dev container setup completed!'", // A command to run after setup
+  "extensions": [
+    "ms-python.python",           // Python extension for VSCode
+    "ms-vscode.vscode-node-azure-pack", // Node.js related extensions
+    "esbenp.prettier-vscode",      // Prettier for code formatting
+    "dbaeumer.vscode-eslint"      // ESLint for JavaScript/TypeScript linting
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash",  // Set default shell to bash
+    "editor.formatOnSave": true,                     // Auto-format code on save
+    "eslint.enable": true                            // Enable ESLint by default
+  },
+  "forwardPorts": [
+    3000,  // Example: if running a web app, expose port 3000
+    5000   // Example: if running a Python app, expose port 5000
+  ],
+  "remoteUser": "vscode"  // Set the user to "vscode" for running inside the container
+}
